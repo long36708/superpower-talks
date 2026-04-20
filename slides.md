@@ -6,39 +6,27 @@ duration: 25min
 transition: slide-left
 ---
 
-# Superpowers
+# AI 编程的困境
 
-## AI 编码超能力
+| 痛点 | 表现 |
+|------|------|
+| 上下文污染 | AI 越聊越乱，代码质量下降 |
+| 随机修复 | 试了这个再试那个，越改越烂 |
+| 跳过测试 | "手动测了" —— 上线崩了 |
+| 一次做太多 | 同时改 20 个文件，不知改了什么 |
 
-<span class="text-lg op-70">让 AI 真正帮你完成任务，而不是陪你聊天</span>
+**解决思路：把 AI 的能力框在流程里**
 
 ---
 transition: fade
 ---
 
-# 问题：AI 编程的困境
-
-| 痛点 | 现状 |
-|------|------|
-| 上下文污染 | AI 越聊越乱，代码质量下降 |
-| 随机修复 | 试了这个再试那个，越改越烂 |
-| 跳过测试 | "我手动测了" —— 然后上线崩了 |
-| 一次做太多 | AI 同时改 20 个文件，不知道改了什么 |
-
-**解决思路：把 AI 的能力框在流程里**
-
----
-transition: slide-up
----
-
-# 核心理念
-
-## 两个铁律
+# 三个铁律
 
 <v-click>
 
 **1. brainstorming 之前不写代码**
-> "这太简单了，不需要设计" —— 简单项目是未经检查的假设导致最多浪费工作的地方
+> "这太简单了，不需要设计" —— 简单项目是浪费工作最多的地方
 
 </v-click>
 
@@ -57,10 +45,10 @@ transition: slide-up
 </v-click>
 
 ---
-transition: fade
+transition: slide-up
 ---
 
-# 工作流程
+# 工作流
 
 ```mermaid
 graph LR
@@ -68,18 +56,18 @@ graph LR
     B --> C[writing-plans]
     C --> D[subagent-driven]
     D --> E[finishing]
-    
+
     B -.-> |探索意图| B
     D -.-> |两阶段审查| D
 ```
 
-**关键：每个阶段产出的文档是下一阶段的输入**
+**每个阶段产出的文档是下一阶段的输入**
 
 ---
 transition: slide-left
 ---
 
-# brainstorming：先问清楚再动手
+# brainstorming：问清楚再动手
 
 ## 流程
 
@@ -101,7 +89,7 @@ transition: slide-left
 transition: fade
 ---
 
-# brainstorming：关键检查清单
+# brainstorming：检查清单
 
 <v-clicks>
 
@@ -121,7 +109,7 @@ transition: fade
 transition: slide-up
 ---
 
-# writing-plans：把设计变成可执行的任务
+# writing-plans：把设计变成任务
 
 ## 核心原则
 
@@ -153,7 +141,7 @@ transition: slide-up
 transition: fade
 ---
 
-# writing-plans：任务结构示例
+# writing-plans：任务结构
 
 ```markdown
 ### 任务 N：用户认证组件
@@ -170,22 +158,22 @@ transition: fade
 - [ ] **步骤 5：提交**
 ```
 
-**每步都要有：完整代码 + 精确命令 + 预期输出**
+**每步：完整代码 + 精确命令 + 预期输出**
 
 ---
 transition: slide-left
 ---
 
-# subagent-driven-development：执行计划
+# subagent-driven：执行计划
 
-## 每个任务走这个循环
+## 任务循环
 
 ```mermaid
-graph TD
-    A[派遣实施子代理] --> B[规范审查]
-    B -->|通过| C[代码质量审查]
+graph LR
+    A[派遣子代理] --> B[规范审查]
+    B -->|通过| C[代码审查]
     B -->|失败| A
-    C -->|通过| D[任务完成]
+    C -->|通过| D[完成]
     C -->|失败| A
 ```
 
@@ -193,13 +181,13 @@ graph TD
 
 <v-click>
 
-**1. 规范合规性** —— 满足所有需求？有没有多余的？
+**1. 规范合规性** —— 满足需求？无多余？
 
 </v-click>
 
 <v-click>
 
-**2. 代码质量** —— 测试覆盖？命名清晰？无魔法数字？
+**2. 代码质量** —— 测试覆盖？命名清晰？
 
 </v-click>
 
@@ -207,7 +195,7 @@ graph TD
 transition: fade
 ---
 
-# subagent-driven-development：关键原则
+# subagent-driven：关键原则
 
 <v-clicks>
 
@@ -225,14 +213,14 @@ transition: fade
 transition: slide-up
 ---
 
-# systematic-debugging：系统性找根因
+# systematic-debugging：找根因
 
 ## 四个阶段
 
 | 阶段 | 做什么 | 关键 |
 |------|--------|------|
 | 1. 根因调查 | 读错误、重现、检查变化 | 理解什么和为什么 |
-| 2. 模式分析 | 找类似工作代码、比较差异 | 识别差异 |
+| 2. 模式分析 | 找类似代码、比较差异 | 识别差异 |
 | 3. 假设测试 | 形成假设、最小化测试 | 一次一个变量 |
 | 4. 实施 | 创建失败测试、修复、验证 | 修复根因，不是症状 |
 
@@ -248,7 +236,7 @@ transition: fade
 
 <v-click>
 
-## 红旗 —— 停止并遵循流程
+**红旗 —— 停止并遵循流程**
 
 - "先试试这个，看看是否有效"
 - "跳过测试，我会手动验证"
@@ -266,46 +254,11 @@ transition: fade
 transition: slide-left
 ---
 
-# TDD：测试驱动开发
-
-## 红-绿-重构
-
-```mermaid
-graph LR
-    A[红: 写失败测试] --> B[验证失败]
-    B --> C[绿: 最小实现]
-    C --> D[验证通过]
-    D --> E[重构]
-    E --> A
-```
-
-<v-click>
-
-**红**：看着测试失败（证明测试有效）
-
-</v-click>
-
-<v-click>
-
-**绿**：写最简单的代码通过测试
-
-</v-click>
-
-<v-click>
-
-**重构**：在保持绿色的前提下清理
-
-</v-click>
-
----
-transition: fade
----
-
-# finishing-a-development-branch：完成工作
+# finishing：完成工作
 
 ## 流程
 
-1. **验证测试** —— 在呈现选项前确保测试通过
+1. **验证测试** —— 确保测试通过再继续
 2. **呈现选项**：
    - 本地合并回基准分支
    - 推送并创建 PR
@@ -328,7 +281,7 @@ graph LR
     B --> C[writing-plans<br/>拆任务]
     C --> D[subagent-driven<br/>执行+审查]
     D --> E[finishing<br/>完成]
-    
+
     style B fill:#bbf
     style C fill:#bfb
     style D fill:#fbb
@@ -348,44 +301,11 @@ transition: center
 
 # 记住三个铁律
 
-<v-click>
-
 1. **设计之前不写代码** —— 即使"很简单"
-
-</v-click>
-
-<v-click>
-
 2. **代码之前先写测试** —— 测试先失败再通过
-
-</v-click>
-
-<v-click>
-
 3. **修复之前先找根因** —— 不然越修越乱
 
-</v-click>
-
-<span class="mt-8 text-xl op-70">
-
 把 AI 的能力框在流程里
-
-</span>
-
----
-transition: fade
----
-
-# 资源
-
-**项目地址**：https://github.com/superpowers/superpowers
-
-**技能目录**：
-- `skills/brainstorming/` - 头脑风暴
-- `skills/writing-plans/` - 计划编写
-- `skills/subagent-driven-development/` - 子代理执行
-- `skills/systematic-debugging/` - 系统调试
-- `skills/test-driven-development/` - 测试驱动
 
 ---
 layout: center
@@ -402,6 +322,6 @@ git clone https://github.com/superpowers/superpowers.git
 ls skills/
 ```
 
-<span class="op-70 mt-4">从 brainstorming 开始，每次一个任务</span>
+从 brainstorming 开始，每次一个任务
 
 <PoweredBySlidev mt-10 />
