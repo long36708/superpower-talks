@@ -17,6 +17,33 @@ transition: slide-left
 
 **解决思路：把 AI 的能力框在流程里**
 
+<v-click>
+
+## SuperPowers 的核心价值
+
+**将软件工程最佳实践自动化，强制 AI 从"鲁莽执行者"转变为"严谨工程师"**
+
+</v-click>
+
+<v-click>
+
+- 设计先行 → 不写没有设计文档的代码
+- TDD → 不写没有失败测试的代码
+- 代码审查 → 不写没有审查通过的代码
+
+</v-click>
+
+<v-click>
+
+**显著提升代码质量和逻辑一致性**
+
+</v-click>
+
+<!--
+  逻辑顺序：困境 → 解决思路 → 核心价值
+  衔接点："解决思路"抛出问题，"核心价值"作为回答
+-->
+
 ---
 transition: fade
 ---
@@ -44,11 +71,22 @@ transition: fade
 
 </v-click>
 
+<!--
+  逻辑顺序：三个铁律 → 工作流（具象化）
+  衔接点：铁律是抽象原则，工作流是具体落地
+-->
+
 ---
 transition: slide-up
 ---
 
 # 工作流
+
+<!--
+  开发前准备：使用 Git Worktree 创建隔离工作空间
+  技术：git worktree add <新分支> <路径>
+  目的：为每个任务创建独立的沙箱，防止未完成或错误的代码污染主分支
+-->
 
 ```mermaid
 graph LR
@@ -69,6 +107,35 @@ transition: slide-left
 
 # brainstorming：问清楚再动手
 
+<!--
+  核心理念："先想后做"
+  过程：苏格拉底式对话 → 提炼需求文档 → 制定开发计划
+  这三个阶段（brainstorming + writing-plans）完整实现"先想后做"
+-->
+
+<v-click>
+
+**苏格拉底式对话**：一次一个问题，澄清模糊想法
+
+</v-click>
+
+<v-click>
+
+**提炼需求文档**：将模糊需求转化为清晰规范
+
+</v-click>
+
+<v-click>
+
+**制定开发计划**：基于规范拆解为可执行任务
+
+</v-click>
+
+<!--
+  逻辑顺序：brainstorming 核心理念 → 流程
+  衔接点：理念是 WHY，流程是 HOW
+-->
+
 ## 流程
 
 1. 探索项目上下文
@@ -85,11 +152,21 @@ transition: slide-left
 </HARD-GATE>
 ```
 
+<!--
+  逻辑顺序：brainstorming 流程 → 检查清单（实践指南）
+  衔接点：检查清单是流程的操作化版本
+-->
+
 ---
 transition: fade
 ---
 
 # brainstorming：检查清单
+
+<!--
+  入口标记："唯一出口 → writing-plans"
+  强调 brainstorming 必须有明确输出才能进入下一阶段
+-->
 
 <v-clicks>
 
@@ -105,11 +182,21 @@ transition: fade
 
 **最终状态：调用 writing-plans（唯一出口）**
 
+<!--
+  逻辑顺序：brainstorming → writing-plans
+  衔接点：设计文档是输入，任务列表是输出
+-->
+
 ---
 transition: slide-up
 ---
 
 # writing-plans：把设计变成任务
+
+<!--
+  逻辑顺序：writing-plans 原则 → 任务结构示例
+  衔接点：原则是抽象规则，示例是具体呈现
+-->
 
 ## 核心原则
 
@@ -123,11 +210,18 @@ transition: slide-up
 
 **小任务粒度** —— 每步 2-5 分钟，包含完整代码
 
+> 细粒度便于管理和验证，一旦出错能立即发现并修正，避免在错误方向上堆积 Bug
+
 </v-click>
 
 <v-click>
 
 **TDD 导向** —— 失败测试 → 最小实现 → 通过 → 提交
+
+> **红-绿-重构循环**：
+> - 🔴 红：编写失败测试
+> - 🟢 绿：编写最小代码使测试通过
+> - 🔵 重构：优化代码质量
 
 </v-click>
 
@@ -137,11 +231,21 @@ transition: slide-up
 
 </v-click>
 
+<!--
+  逻辑顺序：writing-plans 原则 → 任务结构示例
+  衔接点：原则是抽象规则，示例是具体呈现
+-->
+
 ---
 transition: fade
 ---
 
 # writing-plans：任务结构
+
+<!--
+  TDD 循环的关键体现：测试失败 → 实现 → 测试通过
+  每个步骤都要求完整代码，避免"先写后面再补测试"
+-->
 
 ```markdown
 ### 任务 N：用户认证组件
@@ -166,6 +270,33 @@ transition: slide-left
 
 # subagent-driven：执行计划
 
+<!--
+  核心理念："子代理驱动开发"
+  定义：为每个小任务派遣一个独立的子代理执行，完成后即离开
+  优点：避免上下文污染，就像每次都在一张白纸上工作
+-->
+
+<v-click>
+
+**什么是子代理驱动开发？**
+
+每个小任务派遣一个独立的子代理 → 执行完成 → 离开
+
+</v-click>
+
+<v-click>
+
+**核心优点：避免上下文污染**
+
+不受之前任务残留信息的影响，每次都是"新鲜开始"
+
+</v-click>
+
+<!--
+  逻辑顺序：概念定义 → 任务循环流程图
+  衔接点：mermaid 图展示具体执行流程
+-->
+
 ## 任务循环
 
 ```mermaid
@@ -177,17 +308,17 @@ graph LR
     C -->|失败| A
 ```
 
-## 两阶段审查
+## 两轮审查
 
 <v-click>
 
-**1. 规范合规性** —— 满足需求？无多余？
+**1. 规格审查** —— 确保需求实现
 
 </v-click>
 
 <v-click>
 
-**2. 代码质量** —— 测试覆盖？命名清晰？
+**2. 代码质量审查** —— 确保代码规范
 
 </v-click>
 
@@ -209,11 +340,40 @@ transition: fade
 
 </v-clicks>
 
+<!--
+  逻辑顺序：subagent-driven 执行 → systematic-debugging（调试时切入）
+  衔接点：subagent-driven 强调"不鲁莽"，debugging 强调"找根因"
+  这是两个不同场景，但都是铁律的延伸
+-->
+
 ---
 transition: slide-up
 ---
 
 # systematic-debugging：找根因
+
+<!--
+  核心原则："先找根本原因再修复"
+  方法：阅读错误信息 → 模式识别 → 假设测试 → TDD 修复
+  这是"调试之前先找根因"铁律的具体落地
+-->
+
+<v-click>
+
+**核心原则：先找根本原因再修复**
+
+</v-click>
+
+<v-click>
+
+**方法论：分析错误信息 → 模式识别 → 假设测试 → TDD 修复**
+
+</v-click>
+
+<!--
+  逻辑顺序：核心原则 → 四个阶段
+  衔接点：原则是 WHY，阶段是 HOW
+-->
 
 ## 四个阶段
 
@@ -250,11 +410,28 @@ transition: fade
 
 </v-click>
 
+<!--
+  逻辑顺序：systematic-debugging → finishing
+  衔接点：调试完成后进入完成阶段
+  过渡效果：slide-left 从左侧滑入
+-->
+
 ---
 transition: slide-left
 ---
 
 # finishing：完成工作
+
+<!--
+  核心原则：测试失败 = 停止
+  这是 TDD 铁律的最终保障
+-->
+
+<!--
+  逻辑顺序：finishing → 总结
+  衔接点：从具体流程回归全局视角
+  过渡效果：slide-up 从下方升起
+-->
 
 ## 流程
 
@@ -269,11 +446,22 @@ transition: slide-left
 
 **测试失败？停止。不要继续。**
 
+<!--
+  逻辑顺序：finishing → 总结
+  衔接点：从具体流程回归全局视角
+  过渡效果：slide-up 从下方升起
+-->
+
 ---
 transition: slide-up
 ---
 
 # 总结：Superpowers 工作流
+
+<!--
+  mermaid 图回归：强化工作流的全局认知
+  表格总结：每个阶段的核心产出（呼应开头的困境表格）
+-->
 
 ```mermaid
 graph LR
@@ -295,17 +483,36 @@ graph LR
 | subagent-driven | 审查通过的代码 |
 | finishing | 合并选项 |
 
+<!--
+  逻辑顺序：总结 → 记住三个铁律
+  衔接点：从结构化知识回归核心记忆点
+  呼应开头："三个铁律"幻灯片
+  过渡效果：center 居中聚焦
+-->
+
 ---
 transition: center
 ---
 
 # 记住三个铁律
 
+<!--
+  首尾呼应：
+  - 开篇：三个铁律（引入问题解决的框架）
+  - 结尾：三个铁律（强化核心记忆点）
+-->
+
 1. **设计之前不写代码** —— 即使"很简单"
 2. **代码之前先写测试** —— 测试先失败再通过
 3. **修复之前先找根因** —— 不然越修越乱
 
 把 AI 的能力框在流程里
+
+<!--
+  逻辑顺序：记住三个铁律 → 开始使用
+  衔接点：从认知转向行动
+  收尾语呼应开篇：把 AI 的能力框在流程里
+-->
 
 ---
 layout: center
@@ -314,14 +521,22 @@ class: text-center
 
 # 开始使用
 
+<!--
+  结尾三要素：
+  1. 行动入口：git clone
+  2. 关键路径：skills/ 目录
+  3. 核心提示：从 brainstorming 开始
+-->
+
 ```bash
 # 克隆项目
 git clone https://github.com/superpowers/superpowers.git
 
 # 查看 skills 目录
 ls skills/
+
+# 安装 skills 到全局
+npx skills add https://github.com/superpowers/superpowers.git -g
 ```
 
 从 brainstorming 开始，每次一个任务
-
-<PoweredBySlidev mt-10 />
